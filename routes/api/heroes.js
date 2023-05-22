@@ -5,7 +5,7 @@ const { upload } = require('../../middleware');
 
 router.get('/', ctrl.getHeroes);
 
-router.get('/:heroId', ctrl.getHeroById);
+router.get('/:heroId', ctrl.getHero);
 
 router.post('/', upload.array('images', 6), ctrl.createHero);
 
