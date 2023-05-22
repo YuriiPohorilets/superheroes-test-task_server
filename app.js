@@ -4,9 +4,10 @@ const cors = require('cors');
 const path = require('path');
 const connectDb = require('./db/connection');
 
-// const heroesRoutes = require('./routes/api/heroes');
+const heroesRoutes = require('./routes/api/heroes');
 
 const configPath = path.join(__dirname, '.env');
+
 require('dotenv').config({
   path: configPath,
 });
@@ -20,7 +21,7 @@ app.use(cors());
 app.use(express.json());
 app.use(express.static('public'));
 
-// app.use('/api/heroes', heroesRoutes);
+app.use('/api/heroes', heroesRoutes);
 
 connectDb();
 
