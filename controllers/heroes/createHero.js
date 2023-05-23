@@ -14,6 +14,13 @@ const createHero = asyncHandler(async (req, res) => {
 
   const hero = await findHeroByName(nickname);
 
+  const imageUrls = [];
+  const images = req.files;
+
+  if (images) {
+    images.forEach(({ path }) => imageUrls.push(path));
+  }
+
   if (hero) {
     return res
       .status(409)
@@ -26,6 +33,7 @@ const createHero = asyncHandler(async (req, res) => {
     originDescription,
     superpowers,
     catchPhrase,
+    images: imageUrls,
   });
 
   res.status(201).json(newHero);

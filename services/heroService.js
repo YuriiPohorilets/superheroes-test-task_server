@@ -23,6 +23,7 @@ const createNewHero = async ({
   originDescription,
   superpowers,
   catchPhrase,
+  images,
 }) => {
   const newHero = await new Hero({
     nickname,
@@ -30,6 +31,7 @@ const createNewHero = async ({
     originDescription,
     superpowers,
     catchPhrase,
+    images,
   });
   await newHero.save();
 

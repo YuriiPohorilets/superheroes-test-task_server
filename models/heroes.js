@@ -5,10 +5,11 @@ const heroSchema = new Schema(
     nickname: {
       type: String,
       required: [true, 'Nickname is required'],
+      unique: true,
     },
     realName: {
       type: String,
-      required: [true, 'Real name is required'],
+      default: 'Unknown',
     },
     originDescription: {
       type: String,
@@ -24,7 +25,6 @@ const heroSchema = new Schema(
     },
     images: {
       type: [String],
-      // required: [true, 'Image is required'],
     },
   },
 
