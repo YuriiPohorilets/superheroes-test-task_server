@@ -1,3 +1,4 @@
+const cloudinary = require('cloudinary').v2;
 const { Hero } = require('../models');
 
 const getAllHeroes = async (page, limit) => {
@@ -9,6 +10,12 @@ const getAllHeroes = async (page, limit) => {
   }).sort({ createdAt: -1 });
 
   return heroes;
+};
+
+const getTotalHits = async () => {
+  const heroes = await Hero.find({});
+
+  return heroes.length;
 };
 
 const getHeroById = async _id => {
@@ -65,11 +72,19 @@ const findHeroByName = async nickname => {
   return hero;
 };
 
+const deleteImage = async imgId => {
+  const result = await cloudinary.uploader.destroy(imgId);
+
+  return result;
+};
+
 module.exports = {
   getAllHeroes,
+  getTotalHits,
   getHeroById,
   createNewHero,
   deleteHeroById,
   updateHeroById,
   findHeroByName,
+  deleteImage,
 };

@@ -11,11 +11,10 @@ const createHero = asyncHandler(async (req, res) => {
 
   const { nickname, realName, originDescription, superpowers, catchPhrase } =
     req.body;
+  const images = req.files;
 
   const hero = await findHeroByName(nickname);
-
   const imageUrls = [];
-  const images = req.files;
 
   if (images) {
     images.forEach(({ path }) => imageUrls.push(path));
