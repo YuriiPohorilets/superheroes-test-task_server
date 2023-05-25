@@ -10,6 +10,14 @@ const updateHero = asyncHandler(async (req, res) => {
 
   const { heroId } = req.params;
   const hero = req.body;
+  const images = req.files;
+
+  const imageUrls = [];
+
+  if (images) {
+    images.forEach(({ path }) => imageUrls.push(path));
+  }
+
   const updatedHero = await updateHeroById(heroId, hero);
 
   !updatedHero

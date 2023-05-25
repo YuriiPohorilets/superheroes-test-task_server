@@ -7,9 +7,9 @@ router.get('/', ctrl.getHeroes);
 
 router.get('/:heroId', ctrl.getHero);
 
-router.post('/', upload.array('images', 12), ctrl.createHero);
+router.post('/', upload.any(), ctrl.createHero);
 
-router.patch('/:heroId', upload.array('images', 12), ctrl.updateHero);
+router.patch('/:heroId', upload.any(), ctrl.updateHero);
 
 router.delete('/:heroId', ctrl.deleteHero);
 

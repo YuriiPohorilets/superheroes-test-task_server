@@ -16,11 +16,11 @@ const heroSchema = new Schema(
       required: [true, 'Description is required'],
     },
     superpowers: {
-      type: [String],
+      type: String,
       required: [true, 'Description is required'],
     },
     catchPhrase: {
-      type: [String],
+      type: String,
       required: [true, 'Phrase is required'],
     },
     images: {

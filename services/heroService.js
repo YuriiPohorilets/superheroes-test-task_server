@@ -53,12 +53,19 @@ const deleteHeroById = async _id => {
 
 const updateHeroById = async (
   _id,
-  { nickname, realName, originDescription, superpowers, catchPhrase }
+  { nickname, realName, originDescription, superpowers, catchPhrase, images }
 ) => {
   const updatedHero = await Hero.findByIdAndUpdate(
     _id,
     {
-      $set: { nickname, realName, originDescription, superpowers, catchPhrase },
+      $set: {
+        nickname,
+        realName,
+        originDescription,
+        superpowers,
+        catchPhrase,
+        images,
+      },
     },
     { new: true }
   );
