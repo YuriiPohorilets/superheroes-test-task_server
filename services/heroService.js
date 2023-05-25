@@ -1,4 +1,3 @@
-const cloudinary = require('cloudinary').v2;
 const { Hero } = require('../models');
 
 const getAllHeroes = async (page, limit) => {
@@ -73,16 +72,25 @@ const updateHeroById = async (
   return updatedHero;
 };
 
-const findHeroByName = async nickname => {
+const getHeroByName = async nickname => {
   const hero = await Hero.findOne({ nickname });
 
   return hero;
 };
 
-const deleteImage = async imgId => {
-  const result = await cloudinary.uploader.destroy(imgId);
+const deleteHeroImage = async (_id, images) => {
+  const updatedImages = await Hero.findByIdAndUpdate(
+    _id,
+    {
+      $set: {
+        images,
+      },
+    },
 
-  return result;
+    { new: true }
+  );
+
+  return updatedImages;
 };
 
 module.exports = {
@@ -92,6 +100,6 @@ module.exports = {
   createNewHero,
   deleteHeroById,
   updateHeroById,
-  findHeroByName,
-  deleteImage,
+  getHeroByName,
+  deleteHeroImage,
 };

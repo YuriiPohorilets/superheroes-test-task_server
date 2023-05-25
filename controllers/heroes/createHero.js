@@ -1,6 +1,6 @@
 const asyncHandler = require('express-async-handler');
 const { joiHeroSchema } = require('../../schemas');
-const { createNewHero, findHeroByName } = require('../../services/heroService');
+const { createNewHero, getHeroByName } = require('../../services/heroService');
 
 const createHero = asyncHandler(async (req, res) => {
   const { error } = joiHeroSchema.validate(req.body);
@@ -13,7 +13,7 @@ const createHero = asyncHandler(async (req, res) => {
     req.body;
   const images = req.files;
 
-  const hero = await findHeroByName(nickname);
+  const hero = await getHeroByName(nickname);
   const imageUrls = [];
 
   if (images) {

@@ -11,6 +11,8 @@ router.post('/', upload.any(), ctrl.createHero);
 
 router.patch('/:heroId', upload.any(), ctrl.updateHero);
 
+router.patch('/images/:heroId', ctrl.deleteImage);
+
 router.delete('/:heroId', ctrl.deleteHero);
 
 module.exports = router;

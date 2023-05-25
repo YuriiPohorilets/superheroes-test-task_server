@@ -1,6 +1,6 @@
 const asyncHandler = require('express-async-handler');
 const { joiHeroSchema } = require('../../schemas');
-const { updateHeroById } = require('../../services/heroService');
+const { updateHeroById, getHeroById } = require('../../services/heroService');
 
 const updateHero = asyncHandler(async (req, res) => {
   const { error } = joiHeroSchema.validate(req.body);
@@ -12,13 +12,17 @@ const updateHero = asyncHandler(async (req, res) => {
   const hero = req.body;
   const images = req.files;
 
-  const imageUrls = [];
+  const { images: heroImages } = await getHeroById(heroId);
+  const imageUrls = [...heroImages];
 
   if (images) {
     images.forEach(({ path }) => imageUrls.push(path));
   }
 
-  const updatedHero = await updateHeroById(heroId, hero);
+  const updatedHero = await updateHeroById(heroId, {
+    ...hero,
+    images: imageUrls,
+  });
 
   !updatedHero
     ? res.status(404).json({ message: 'Hero not found' })

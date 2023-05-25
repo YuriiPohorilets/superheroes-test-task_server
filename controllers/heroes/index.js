@@ -3,6 +3,7 @@ const deleteHero = require('./deleteHero');
 const updateHero = require('./updateHero');
 const getHero = require('./getHero');
 const getHeroes = require('./getHeroes');
+const deleteImage = require('./deleteImage');
 
 module.exports = {
   createHero,
@@ -10,4 +11,5 @@ module.exports = {
   updateHero,
   getHero,
   getHeroes,
+  deleteImage,
 };
