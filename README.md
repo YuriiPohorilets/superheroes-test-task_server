@@ -93,6 +93,6 @@ npm start
 
 ---
 
-# [Frontend repository](https://github.com/YuriiPohorilets/superheroes-test-task_server)
+# [Frontend repository](https://github.com/YuriiPohorilets/superheroes-test-task_client)
 
 # [Жива сторінка](https://yuriipohorilets.github.io/superheroes-test-task_client/)
