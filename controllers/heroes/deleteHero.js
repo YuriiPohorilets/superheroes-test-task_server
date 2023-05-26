@@ -8,7 +8,7 @@ const deleteHero = asyncHandler(async (req, res) => {
 
   !deletedHero
     ? res.status(404).json({ message: 'Hero not found' })
-    : res.status(201).json({ message: 'Hero successfully deleted' });
+    : res.status(200).json({ message: 'Hero successfully deleted' });
 });
 
 module.exports = deleteHero;
