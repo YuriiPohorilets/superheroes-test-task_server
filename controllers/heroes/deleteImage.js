@@ -4,7 +4,7 @@ const { deleteHeroImage, getHeroById } = require('../../services/heroService');
 const deleteImage = asyncHandler(async (req, res) => {
   const { heroId } = req.params;
   const { imageUrl } = req.body;
-  console.log(imageUrl);
+
   const { images } = await getHeroById(heroId);
 
   const filterImages = images.filter(image => image !== imageUrl);
